@@ -9,7 +9,7 @@ interface comment {
   content: string;
   createdAt: string;
   score: number;
-  img: string,
+  img: string;
   username: string;
   currentUser: boolean;
   replies: [];

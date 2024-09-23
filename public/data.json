@@ -16,7 +16,7 @@
     {
       "id": 2,
       "content": "Woah, your project looks awesome! How long have you been coding for? I'm still new, but think I want to dive into React as well soon. Perhaps you can give me an insight on where I can learn React? Thanks!",
-      "createdAt": "5 December 2021",
+      "createdAt": "",
       "score": 5,
       "img": "src/assets/avatars/image-maxblagun.png",
       "username": "maxblagun",
@@ -32,15 +32,7 @@
           "username": "ramsesmiron",
           "currentUser": false,
           "replies": []
-        },
-        {
-          "id": 4,
-          "content": "",
-          "score": 2,
-          "img": "src/assets/avatars/image-juliusomo.png",
-          "username": "juliusomo",
-          "currentUser": true,
-          "replies": []
         }
+        
   ]
 }
