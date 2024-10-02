@@ -70,5 +70,18 @@ $colorRed: #ed6368;
         }
       }
     }
+    
+    form{
+      display: flex;
+      flex-direction: column;
+      align-items: end;
+      margin-top: 8px;
+
+
+      button{
+        margin-top: 8px;
+       
+      }
+    }
   }
 }
