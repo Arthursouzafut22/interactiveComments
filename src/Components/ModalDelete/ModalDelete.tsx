@@ -2,18 +2,29 @@ import styles from "./ModalDelete.module.scss";
 import Button from "../Button/Button";
 import { useContext } from "react";
 import { ContextComments } from "../../Hooks/ContextCommnets";
-// import { useEffect } from "react";
-// useEffect(() => {
-//   document.body.classList.add("active-hidden")
-// },[])
+import { useEffect } from "react";
 
 type idProps = { id: string };
 
 const ModalDelete = ({ id }: idProps) => {
   const context = useContext(ContextComments);
 
-  if (!context) return;
+  if (!context) return null;
   const { activeModal, setActiveModal, removeComments } = context;
+
+  useEffect(() => {
+    const body = window.document.body;
+
+    if (activeModal) {
+      body.classList.add("disable-scroll");
+    } else {
+      body.classList.remove("disable-scroll");
+    }
+
+    return () => {
+      body.classList.remove("disable-scroll");
+    };
+  }, [activeModal]);
 
   return (
     <>

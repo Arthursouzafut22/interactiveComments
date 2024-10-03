@@ -13,7 +13,9 @@ body {
   background-color: #f5f6fa;
 }
 
-.active-hidden{}
+body.disable-scroll{
+  overflow-y: hidden;
+}
 
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {

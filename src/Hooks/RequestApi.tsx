@@ -35,6 +35,7 @@ const RequestApi = () => {
 
   return {
     resquest,
+    setResquest,
     fetchComents,
   };
 };

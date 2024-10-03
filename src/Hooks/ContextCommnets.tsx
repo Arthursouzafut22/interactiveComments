@@ -7,7 +7,7 @@ import {
 } from "react";
 
 interface ContextInte {
-  activeModal:boolean;
+  activeModal: boolean;
   setActiveModal: React.Dispatch<React.SetStateAction<boolean>>;
   newComments: Commetarios[];
   comment: string;
@@ -132,7 +132,7 @@ const StorageComments = ({ children }: ChildrenProps) => {
         editComments,
         updateComments,
         activeModal,
-        setActiveModal
+        setActiveModal,
       }}
     >
       {children}
