@@ -16,7 +16,7 @@ const WrapperBtns: React.FC<propsInfo> = memo(
     const context = useContext(ContextComments);
 
     if (!context) return;
-    const { removeComments, editComments } = context;
+    const { editComments, setActiveModal } = context;
 
     const isButtonEdit: React.CSSProperties = isEditing
       ? { color: "#5457B6", opacity: "0.5", pointerEvents: "none" }
@@ -26,7 +26,7 @@ const WrapperBtns: React.FC<propsInfo> = memo(
       <div className={styles.wrapperBtns}>
         <button
           style={{ color: "#ED6368" }}
-          onClick={(e) => removeComments(id, e)}
+          onClick={() => setActiveModal(true)}
         >
           <RiDeleteBin7Fill />
           Delete

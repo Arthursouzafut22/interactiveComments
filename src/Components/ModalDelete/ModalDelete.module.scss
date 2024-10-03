@@ -1,0 +1,56 @@
+$DarkColor: #67727e;
+
+.wrapper {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.252);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 20;
+  overflow-y: hidden;
+  
+
+  .modal {
+    width: 450px;
+    max-width: 100%;
+    padding: 28px 20px;
+    border-radius: 8px;
+    background-color: #ffffff;
+    margin: 0px 20px;
+
+    h2 {
+      font-size: 18px;
+      font-weight: 700;
+      text-align: left;
+    }
+
+    p {
+      text-align: left;
+      color: $DarkColor;
+      margin-top: 8px;
+    }
+
+    .wrpBtns {
+      margin-top: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 50px;
+
+      button {
+        flex: 1;
+      }
+
+      button:first-child {
+        background-color: $DarkColor;
+      }
+      button:last-child {
+        background-color: #ed6368;
+      }
+    }
+  }
+}

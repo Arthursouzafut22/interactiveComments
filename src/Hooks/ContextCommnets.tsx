@@ -7,6 +7,8 @@ import {
 } from "react";
 
 interface ContextInte {
+  activeModal:boolean;
+  setActiveModal: React.Dispatch<React.SetStateAction<boolean>>;
   newComments: Commetarios[];
   comment: string;
   setNewComments: React.Dispatch<React.SetStateAction<Commetarios[]>>;
@@ -50,6 +52,7 @@ interface Commetarios {
 const StorageComments = ({ children }: ChildrenProps) => {
   const [comment, setComment] = useState<string>("");
   const [newComments, setNewComments] = useState<Commetarios[]>([]);
+  const [activeModal, setActiveModal] = useState<boolean>(false);
 
   // Adicionar comments....
   function addComments(event: FormEvent<HTMLFormElement>) {
@@ -75,7 +78,7 @@ const StorageComments = ({ children }: ChildrenProps) => {
     event: React.MouseEvent<HTMLButtonElement>
   ) {
     event.preventDefault();
-
+    setActiveModal(false);
     setNewComments(newComments.filter((item) => item.id !== id));
   }
 
@@ -128,6 +131,8 @@ const StorageComments = ({ children }: ChildrenProps) => {
         removeComments,
         editComments,
         updateComments,
+        activeModal,
+        setActiveModal
       }}
     >
       {children}

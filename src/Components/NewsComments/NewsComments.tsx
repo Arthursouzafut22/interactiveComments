@@ -5,6 +5,7 @@ import { ContextComments } from "../../Hooks/ContextCommnets";
 import { useContext } from "react";
 import WrapperBtns from "./WrapperBtns";
 import Info from "./Info";
+import ModalDelete from "../ModalDelete/ModalDelete";
 
 const NewsComments: React.FC = () => {
   const context = useContext(ContextComments);
@@ -32,6 +33,7 @@ const NewsComments: React.FC = () => {
           ) : (
             <p className={styles.comments}>{comentario}</p>
           )}
+          <ModalDelete id={id} />
         </div>
       </div>
     ))
