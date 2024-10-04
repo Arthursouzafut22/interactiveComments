@@ -1,6 +1,7 @@
 import { useState, useCallback, useEffect } from "react";
 
 interface user {
+  id: number;
   username: string;
 }
 
@@ -12,8 +13,14 @@ interface comment {
   img: string;
   username: string;
   currentUser: boolean;
-  replies: [];
+  comentario: string;
+  replies: Reply[];
 }
+
+type Reply = {
+  user: string;
+  coment: string;
+};
 
 interface ApiResponse {
   currenceUser: user;

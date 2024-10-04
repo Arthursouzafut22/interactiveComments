@@ -31,6 +31,12 @@ $detailsColor: #f5f6fa;
         cursor: pointer;
         padding: 2px;
         border: none;
+        transition: 0.3s;
+
+
+        &:hover{
+          opacity: 0.5;
+        }
       }
 
       .info {

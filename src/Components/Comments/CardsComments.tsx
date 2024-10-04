@@ -2,8 +2,8 @@ import styles from "./CardsComments.module.scss";
 import { FaShare } from "react-icons/fa6";
 import RequestApi from "../../Hooks/RequestApi";
 import Controls from "./Controls";
-
 import ReplyComments from "../ReplyComments/ReplyComments";
+import CommentsUser from "../CommentsUser/CommentsUser";
 
 const CardsComments: React.FC = () => {
   const { resquest, setResquest } = RequestApi();
@@ -11,6 +11,29 @@ const CardsComments: React.FC = () => {
   if (!resquest) return null;
   const { comments } = resquest;
 
+  // Reply commnets Users....
+  function postComments(comentarios: string, username: string) {
+    if (comentarios.trim() === "") return;
+    const newComments = {
+      coment: comentarios,
+      user: username,
+    };
+
+    setResquest((prevUsers) =>
+      prevUsers
+        ? {
+            ...prevUsers,
+            comments: prevUsers.comments.map((item) =>
+              item.username === username
+                ? { ...item, replies: [...item.replies, newComments] }
+                : item
+            ),
+          }
+        : null
+    );
+  }
+
+  // Active Comments user...
   function activeUser(id: number) {
     setResquest((prevComments) =>
       prevComments
@@ -30,7 +53,16 @@ const CardsComments: React.FC = () => {
     <>
       {comments &&
         comments.map(
-          ({ id, img, username, createdAt, content, currentUser }) => (
+          ({
+            id,
+            img,
+            username,
+            createdAt,
+            content,
+            currentUser,
+            comentario,
+            replies,
+          }) => (
             <>
               <div key={id} className={styles.cards}>
                 <Controls />
@@ -49,7 +81,16 @@ const CardsComments: React.FC = () => {
                 </div>
               </div>
 
-              {currentUser ? <ReplyComments username={username} /> : ""}
+              {currentUser ? (
+                <ReplyComments
+                  username={username}
+                  comentario={comentario}
+                  postComments={postComments}
+                />
+              ) : (
+                ""
+              )}
+              <CommentsUser replies={replies} />
             </>
           )
         )}
