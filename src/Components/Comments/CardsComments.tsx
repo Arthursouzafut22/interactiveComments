@@ -5,6 +5,7 @@ import Controls from "./Controls";
 import ReplyComments from "../ReplyComments/ReplyComments";
 import CommentsUser from "../CommentsUser/CommentsUser";
 
+
 const CardsComments: React.FC = () => {
   const { resquest, setResquest } = RequestApi();
 
@@ -25,7 +26,11 @@ const CardsComments: React.FC = () => {
             ...prevUsers,
             comments: prevUsers.comments.map((item) =>
               item.username === username
-                ? { ...item, replies: [...item.replies, newComments] }
+                ? {
+                    ...item,
+                    currentUser: !item.currentUser,
+                    replies: [...item.replies, newComments],
+                  }
                 : item
             ),
           }
@@ -49,6 +54,21 @@ const CardsComments: React.FC = () => {
     );
   }
 
+  function editCommentsUsers(comentario: string) {
+    setResquest((prevCurrent) =>
+      prevCurrent
+        ? {
+            ...prevCurrent,
+            comments: prevCurrent.comments.map((item) =>
+              item.comentario === comentario
+                ? { ...item, activeEdit: !item.activeEdit }
+                : item
+            ),
+          }
+        : null
+    );
+  }
+
   return (
     <>
       {comments &&
@@ -57,15 +77,17 @@ const CardsComments: React.FC = () => {
             id,
             img,
             username,
+            score,
             createdAt,
             content,
             currentUser,
+            activeEdit,
             comentario,
             replies,
           }) => (
             <>
               <div key={id} className={styles.cards}>
-                <Controls />
+                <Controls score={score}/>
                 <div className={styles.wrapperInfo}>
                   <div className={styles.wrapperContent}>
                     <div className={styles.info}>
@@ -90,7 +112,12 @@ const CardsComments: React.FC = () => {
               ) : (
                 ""
               )}
-              <CommentsUser replies={replies} />
+              <CommentsUser
+                replies={replies}
+                activeEdit={activeEdit}
+                comentario={comentario}
+                editCommentsUsers={editCommentsUsers}
+              />
             </>
           )
         )}

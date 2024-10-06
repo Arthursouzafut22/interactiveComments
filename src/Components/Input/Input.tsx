@@ -4,7 +4,7 @@ interface InputProps {
   type: string;
   id: string;
   name: string;
-  value: string;
+  value: string | number;
 }
 
 const Input: React.FC<InputProps> = ({ type, id, name, value }: InputProps) => {

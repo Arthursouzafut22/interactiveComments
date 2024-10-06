@@ -13,6 +13,7 @@ interface comment {
   img: string;
   username: string;
   currentUser: boolean;
+  activeEdit: boolean;
   comentario: string;
   replies: Reply[];
 }

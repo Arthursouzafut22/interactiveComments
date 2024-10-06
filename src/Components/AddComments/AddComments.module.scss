@@ -8,6 +8,22 @@
   background-color: #ffffff;
   border-radius: 8px;
 
+  @media screen and (max-width:767px) {
+    flex-direction: column;
+
+    textarea{
+      align-self:flex-start;
+      justify-self: flex-start;
+      
+    }
+
+    img{
+      align-self: flex-end;
+      justify-self: end;
+    }
+    
+  }
+
   img {
     display: block;
     max-width: 30px;

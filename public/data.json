@@ -11,6 +11,7 @@
       "img": "src/assets/avatars/image-amyrobson.png",
       "username": "amyrobson",
       "currentUser": false,
+      "activeEdit": false,
       "comentario": "",
       "replies": []
     },
@@ -22,6 +23,7 @@
       "img": "src/assets/avatars/image-maxblagun.png",
       "username": "maxblagun",
       "currentUser": false,
+      "activeEdit": false,
       "comentario": "",
       "replies": []
     },
@@ -33,6 +35,7 @@
       "img": "src/assets/avatars/image-ramsesmiron.png",
       "username": "ramsesmiron",
       "currentUser": false,
+      "activeEdit": false,
       "comentario": "",
       "replies": []
     }
