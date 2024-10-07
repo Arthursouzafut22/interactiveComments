@@ -5,7 +5,6 @@ import Controls from "./Controls";
 import ReplyComments from "../ReplyComments/ReplyComments";
 import CommentsUser from "../CommentsUser/CommentsUser";
 
-
 const CardsComments: React.FC = () => {
   const { resquest, setResquest } = RequestApi();
 
@@ -16,8 +15,8 @@ const CardsComments: React.FC = () => {
   function postComments(comentarios: string, username: string) {
     if (comentarios.trim() === "") return;
     const newComments = {
-      coment: comentarios,
       user: username,
+      coment: comentarios,
     };
 
     setResquest((prevUsers) =>
@@ -54,15 +53,13 @@ const CardsComments: React.FC = () => {
     );
   }
 
-  function editCommentsUsers(comentario: string) {
+  function editCommentsUsers(id: number) {
     setResquest((prevCurrent) =>
       prevCurrent
         ? {
             ...prevCurrent,
             comments: prevCurrent.comments.map((item) =>
-              item.comentario === comentario
-                ? { ...item, activeEdit: !item.activeEdit }
-                : item
+              item.id === id ? { ...item, activeEdit: !item.activeEdit } : item
             ),
           }
         : null
@@ -87,7 +84,7 @@ const CardsComments: React.FC = () => {
           }) => (
             <>
               <div key={id} className={styles.cards}>
-                <Controls score={score}/>
+                <Controls score={score} />
                 <div className={styles.wrapperInfo}>
                   <div className={styles.wrapperContent}>
                     <div className={styles.info}>
@@ -113,9 +110,10 @@ const CardsComments: React.FC = () => {
                 ""
               )}
               <CommentsUser
+                id={id}
                 replies={replies}
+                score={score}
                 activeEdit={activeEdit}
-                comentario={comentario}
                 editCommentsUsers={editCommentsUsers}
               />
             </>

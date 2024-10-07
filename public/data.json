@@ -10,8 +10,8 @@
       "score": 12,
       "img": "src/assets/avatars/image-amyrobson.png",
       "username": "amyrobson",
-      "currentUser": false,
       "activeEdit": false,
+      "currentUser": false,
       "comentario": "",
       "replies": []
     },
@@ -22,8 +22,8 @@
       "score": 5,
       "img": "src/assets/avatars/image-maxblagun.png",
       "username": "maxblagun",
-      "currentUser": false,
       "activeEdit": false,
+      "currentUser": false,
       "comentario": "",
       "replies": []
     },
@@ -34,8 +34,8 @@
       "score": 4,
       "img": "src/assets/avatars/image-ramsesmiron.png",
       "username": "ramsesmiron",
-      "currentUser": false,
       "activeEdit": false,
+      "currentUser": false,
       "comentario": "",
       "replies": []
     }

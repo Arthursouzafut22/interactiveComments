@@ -1,11 +1,11 @@
 import { useState, useCallback, useEffect } from "react";
 
-interface user {
+export interface user {
   id: number;
   username: string;
 }
 
-interface comment {
+export interface comment {
   id: number;
   content: string;
   createdAt: string;
@@ -18,12 +18,12 @@ interface comment {
   replies: Reply[];
 }
 
-type Reply = {
+export type Reply = {
   user: string;
   coment: string;
 };
 
-interface ApiResponse {
+export interface ApiResponse {
   currenceUser: user;
   comments: comment[];
 }

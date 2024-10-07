@@ -3,10 +3,11 @@ import Button from "../Button/Button";
 import { useState } from "react";
 
 interface EditCommentsProps {
+  user: string;
   coment: string;
 }
 
-const EditCommentsUsers: React.FC<EditCommentsProps> = ({ coment }) => {
+const EditCommentsUsers: React.FC<EditCommentsProps> = ({ coment, user }) => {
   const [commentEdit, setCommentEdit] = useState<string>(coment);
 
   return (
@@ -15,6 +16,7 @@ const EditCommentsUsers: React.FC<EditCommentsProps> = ({ coment }) => {
         <InputArea
           name="edit"
           id="edit"
+          placeholder={`@${user}`}
           value={commentEdit}
           onChange={({ target }) => setCommentEdit(target.value)}
         />
