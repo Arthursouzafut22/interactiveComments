@@ -16,7 +16,7 @@ const EditComments: React.FC<EditCommentsProps> = ({ comentario }) => {
 
   return (
     <>
-      <form onSubmit={(e) => e.preventDefault()}>
+      <form onSubmit={(e) => e.preventDefault()} style={{ marginTop: "10px" }}>
         <InputArea
           name="edit"
           id="edit"

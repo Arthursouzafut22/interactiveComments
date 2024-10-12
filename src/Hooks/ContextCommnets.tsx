@@ -46,6 +46,7 @@ interface Commetarios {
   username: string;
   comentario: string;
   resposta: Resposta[];
+  score:number;
   isEditing: boolean;
 }
 
@@ -64,6 +65,7 @@ const StorageComments = ({ children }: ChildrenProps) => {
       username: "juliusomo",
       comentario: comment,
       resposta: [],
+      score: 10,
       isEditing: false,
     };
 

@@ -5,63 +5,58 @@ $detailsColor: #f5f6fa;
 
 .cards {
   background-color: #ffffff;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   width: 100%;
-  padding: 20px;
-  gap: 22px;
-  border-radius: 8px;
+  padding: 1.25rem;
+  gap: 1.38rem;
+  border-radius: 0.5rem;
 
-  .wrapperInfo {
-    .wrapperContent {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+  .info {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
 
-      button {
-        font-size: 17px;
-        font-weight: 700;
-        color: $blueColor;
-        display: flex;
-        align-items: center;
-        gap: 3px;
-        background-color: transparent;
-        cursor: pointer;
-        padding: 2px;
-        border: none;
-        transition: 0.3s;
-
-
-        &:hover{
-          opacity: 0.5;
-        }
-      }
-
-      .info {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-
-        img {
-          display: block;
-          max-width: 30px;
-        }
-
-        & :nth-child(2) {
-          color: $oneColor;
-        }
-
-        & :last-child {
-          color: $darkColor;
-        }
-      }
+    img {
+      display: block;
+      max-width: 1.88rem;
     }
 
-    .content {
-      text-align: left;
-      margin-top: 10px;
+    & :nth-child(2) {
+      color: $oneColor;
+    }
+
+    & :last-child {
       color: $darkColor;
+    }
+  }
+
+  .content {
+    text-align: left;
+    margin-top: 10px;
+    color: $darkColor;
+  }
+
+  .wrapperInfo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+
+    button {
+      font-size: 1.06rem;
+      font-weight: 700;
+      color: $blueColor;
+      display: flex;
+      align-items: center;
+      gap: 0.19rem;
+      background-color: transparent;
+      cursor: pointer;
+      padding: 0.13rem;
+      border: none;
+      transition: 0.3s;
+
+      &:hover {
+        opacity: 0.5;
+      }
     }
   }
 }

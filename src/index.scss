@@ -6,6 +6,11 @@
   margin: 0;
 }
 
+html{
+  scrollbar-color: #67727e #f5f6fa;
+  scrollbar-width: thin;
+}
+
 body {
   font-family: "Poppins", sans-serif;
   display: flex;
@@ -26,3 +31,5 @@ input[type="number"]::-webkit-inner-spin-button {
 input[type="number"] {
   -moz-appearance: textfield;
 }
+
+

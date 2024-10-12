@@ -15,9 +15,28 @@ const NewsComments: React.FC = () => {
 
   return (
     newComments &&
-    newComments.map(({ id, username, comentario, isEditing }) => (
+    newComments.map(({ id, username, comentario, isEditing, score }) => (
       <div className={styles.cards} key={id}>
-        <Controls />
+        <Info username={username} />
+        {isEditing ? (
+          <EditComments comentario={comentario} key={id} />
+        ) : (
+          <p className={styles.comments}>{comentario}</p>
+        )}
+        <div className={styles.caixaWrapper}>
+          <Controls score={score} />
+          <WrapperBtns id={id} comentario={comentario} isEditing={isEditing} />
+        </div>
+        <ModalDelete id={id} />
+      </div>
+    ))
+  );
+};
+
+export default NewsComments;
+
+{
+  /* <Controls score={score} />
         <div className={styles.caixa}>
           <div className={styles.wrapper}>
             <Info username={username} />
@@ -25,7 +44,7 @@ const NewsComments: React.FC = () => {
               id={id}
               comentario={comentario}
               isEditing={isEditing}
-            />
+            /> 
           </div>
 
           {isEditing ? (
@@ -34,10 +53,31 @@ const NewsComments: React.FC = () => {
             <p className={styles.comments}>{comentario}</p>
           )}
           <ModalDelete id={id} />
-        </div>
-      </div>
-    ))
-  );
-};
+        </div> */
+}
 
-export default NewsComments;
+// return (
+//   newComments &&
+//   newComments.map(({ id, username, comentario, isEditing, score }) => (
+//     <div className={styles.cards} key={id}>
+//       <Controls score={score} />
+//       <div className={styles.caixa}>
+//         <div className={styles.wrapper}>
+//           <Info username={username} />
+//           <WrapperBtns
+//             id={id}
+//             comentario={comentario}
+//             isEditing={isEditing}
+//           />
+//         </div>
+
+//         {isEditing ? (
+//           <EditComments comentario={comentario} key={id} />
+//         ) : (
+//           <p className={styles.comments}>{comentario}</p>
+//         )}
+//         <ModalDelete id={id} />
+//       </div>
+//     </div>
+//   ))
+// );

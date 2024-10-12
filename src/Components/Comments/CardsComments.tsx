@@ -53,6 +53,7 @@ const CardsComments: React.FC = () => {
     );
   }
 
+  // Edit commente users...
   function editCommentsUsers(id: number) {
     setResquest((prevCurrent) =>
       prevCurrent
@@ -60,6 +61,33 @@ const CardsComments: React.FC = () => {
             ...prevCurrent,
             comments: prevCurrent.comments.map((item) =>
               item.id === id ? { ...item, activeEdit: !item.activeEdit } : item
+            ),
+          }
+        : null
+    );
+  }
+
+  //Update comments users...
+  function updateCommentsUsers(
+    id: number,
+    commentAvtual: string,
+    newCommnets: string
+  ) {
+    setResquest((prevUpdate) =>
+      prevUpdate
+        ? {
+            ...prevUpdate,
+            comments: prevUpdate.comments.map((item) =>
+              item.id === id
+                ? {
+                    ...item,
+                    comentario: item.comentario.replace(
+                      commentAvtual,
+                      newCommnets
+                    ),
+                    activeEdit: !item.activeEdit,
+                  }
+                : item
             ),
           }
         : null
@@ -84,19 +112,17 @@ const CardsComments: React.FC = () => {
           }) => (
             <>
               <div key={id} className={styles.cards}>
-                <Controls score={score} />
+                <div className={styles.info}>
+                  <img src={img} alt={username} />
+                  <p>{username}</p>
+                  <p>{createdAt}</p>
+                </div>
+                <p className={styles.content}>{content}</p>
                 <div className={styles.wrapperInfo}>
-                  <div className={styles.wrapperContent}>
-                    <div className={styles.info}>
-                      <img src={img} alt={username} />
-                      <p>{username}</p>
-                      <p>{createdAt}</p>
-                    </div>
-                    <button onClick={() => activeUser(id)}>
-                      <FaShare /> Reply
-                    </button>
-                  </div>
-                  <p className={styles.content}>{content}</p>
+                  <Controls score={score} />
+                  <button onClick={() => activeUser(id)}>
+                    <FaShare /> Reply
+                  </button>
                 </div>
               </div>
 
@@ -113,8 +139,10 @@ const CardsComments: React.FC = () => {
                 id={id}
                 replies={replies}
                 score={score}
+                comentario={comentario}
                 activeEdit={activeEdit}
                 editCommentsUsers={editCommentsUsers}
+                updateCommentsUsers={updateCommentsUsers}
               />
             </>
           )

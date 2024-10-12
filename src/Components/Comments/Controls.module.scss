@@ -1,26 +1,26 @@
-$blueColor: #5457B6;
-$detailsColor: #F5F6FA;
+$blueColor: #5457b6;
+$detailsColor: #f5f6fa;
 
-.control{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
-    background-color: $detailsColor;
-    padding: 10px 0px;
-    max-width: 8%;
-    border-radius: 8px;
+.control {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  gap: 0.75rem;
+  background-color: $detailsColor;
+  border-radius: 0.5rem;
+  max-width: 100%;
+  width: 100px;
+  padding: 0.63rem;
 
-
-    input{
-        font-size: 17px;
-        font-weight: 700;
-        display: block;
-        width: 50%;
-        background-color: transparent;
-        color: $blueColor;
-        text-align: center;
-        pointer-events: none;
-        border: none;
-    }
+  input {
+    font-size: 1.06rem;
+    font-weight: 700;
+    display: block;
+    width: 50%;
+    background-color: transparent;
+    color: $blueColor;
+    text-align: center;
+    pointer-events: none;
+    border: none;
+  }
 }
