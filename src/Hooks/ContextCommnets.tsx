@@ -15,11 +15,7 @@ interface ContextInte {
   setComment: React.Dispatch<React.SetStateAction<string>>;
   addComments: (event: FormEvent<HTMLFormElement>) => void;
   removeComments: (id: string, event: MouseEvent<HTMLButtonElement>) => void;
-  editComments: (
-    comentario: string,
-    id: string,
-    event: MouseEvent<HTMLButtonElement>
-  ) => void;
+  editComments: (id: string, event: MouseEvent<HTMLButtonElement>) => void;
   updateComments: (
     commentEdit: string,
     comentario: string,
@@ -69,7 +65,6 @@ const StorageComments = ({ children }: ChildrenProps) => {
       isEditing: false,
     };
 
-    localStorage.setItem("comment", JSON.stringify(novoCommet));
     setNewComments(() => [...newComments, novoCommet]);
     setComment("");
   }
@@ -86,7 +81,6 @@ const StorageComments = ({ children }: ChildrenProps) => {
 
   // Editar comments....
   function editComments(
-    comentario: string,
     id: string,
     event: React.MouseEvent<HTMLButtonElement>
   ) {
