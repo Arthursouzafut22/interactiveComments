@@ -25,7 +25,7 @@ const NewsComments: React.FC = () => {
         )}
         <div className={styles.caixaWrapper}>
           <Controls score={score} />
-          <WrapperBtns id={id} comentario={comentario} isEditing={isEditing} />
+          <WrapperBtns id={id} isEditing={isEditing} />
         </div>
         <ModalDelete id={id} />
       </div>
