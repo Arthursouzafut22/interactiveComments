@@ -46,7 +46,7 @@ interface Commetarios {
   username: string;
   comentario: string;
   resposta: Resposta[];
-  score:number;
+  score: number;
   isEditing: boolean;
 }
 

@@ -4,9 +4,11 @@ import RequestApi from "../../Hooks/RequestApi";
 import Controls from "./Controls";
 import ReplyComments from "../ReplyComments/ReplyComments";
 import CommentsUser from "../CommentsUser/CommentsUser";
+import React, { useState } from "react";
 
 const CardsComments: React.FC = () => {
   const { resquest, setResquest } = RequestApi();
+  const [activeModalUsers, setActiveModalUsers] = useState(false);
 
   if (!resquest) return null;
   const { comments } = resquest;
@@ -15,8 +17,10 @@ const CardsComments: React.FC = () => {
   function postComments(comentarios: string, username: string) {
     if (comentarios.trim() === "") return;
     const newComments = {
+      idUser: Math.floor(Math.random() * 200),
       user: username,
       coment: comentarios,
+      activeEdit: false,
     };
 
     setResquest((prevUsers) =>
@@ -53,14 +57,23 @@ const CardsComments: React.FC = () => {
     );
   }
 
-  // Edit commente users...
-  function editCommentsUsers(id: number) {
+  // Edit Comments users...
+  function editCommentsUsers(id: number, idTeste: number) {
     setResquest((prevCurrent) =>
       prevCurrent
         ? {
             ...prevCurrent,
             comments: prevCurrent.comments.map((item) =>
-              item.id === id ? { ...item, activeEdit: !item.activeEdit } : item
+              item.id === id
+                ? {
+                    ...item,
+                    replies: [...item.replies].map((item) =>
+                      item.idUser === idTeste
+                        ? { ...item, activeEdit: !item.activeEdit }
+                        : item
+                    ),
+                  }
+                : item
             ),
           }
         : null
@@ -70,8 +83,9 @@ const CardsComments: React.FC = () => {
   //Update comments users...
   function updateCommentsUsers(
     id: number,
-    commentAvtual: string,
-    newCommnets: string
+    idComm: number,
+    commentAtual: string,
+    newComments: string
   ) {
     setResquest((prevUpdate) =>
       prevUpdate
@@ -81,9 +95,17 @@ const CardsComments: React.FC = () => {
               item.id === id
                 ? {
                     ...item,
-                    comentario: item.comentario.replace(
-                      commentAvtual,
-                      newCommnets
+                    replies: [...item.replies].map((item) =>
+                      item.idUser === idComm
+                        ? {
+                            ...item,
+                            activeEdit: !item.activeEdit,
+                            coment: item.coment.replace(
+                              commentAtual,
+                              newComments
+                            ),
+                          }
+                        : item
                     ),
                     activeEdit: !item.activeEdit,
                   }
@@ -92,6 +114,28 @@ const CardsComments: React.FC = () => {
           }
         : null
     );
+  }
+
+  // remove comments users...
+  function removeCommentsUsers(id: number, idUser: number) {
+    setResquest((prevRemov) =>
+      prevRemov
+        ? {
+            ...prevRemov,
+            comments: prevRemov.comments.map((item) =>
+              item.id === id
+                ? {
+                    ...item,
+                    replies: [...item.replies].filter(
+                      (i) => i.idUser !== idUser
+                    ),
+                  }
+                : item
+            ),
+          }
+        : null
+    );
+    setActiveModalUsers(false);
   }
 
   return (
@@ -107,11 +151,11 @@ const CardsComments: React.FC = () => {
             content,
             currentUser,
             activeEdit,
-            comentario,
+            newComment,
             replies,
           }) => (
-            <>
-              <div key={id} className={styles.cards}>
+            <React.Fragment key={id}>
+              <div className={styles.cards}>
                 <div className={styles.info}>
                   <img src={img} alt={username} />
                   <p>{username}</p>
@@ -128,23 +172,24 @@ const CardsComments: React.FC = () => {
 
               {currentUser ? (
                 <ReplyComments
+                  id={id}
                   username={username}
-                  comentario={comentario}
                   postComments={postComments}
                 />
-              ) : (
-                ""
-              )}
+              ) : null}
               <CommentsUser
                 id={id}
                 replies={replies}
                 score={score}
-                comentario={comentario}
+                newComment={newComment}
                 activeEdit={activeEdit}
                 editCommentsUsers={editCommentsUsers}
                 updateCommentsUsers={updateCommentsUsers}
+                removeCommentsUsers={removeCommentsUsers}
+                activeModalUsers={activeModalUsers}
+                setActiveModalUsers={setActiveModalUsers}
               />
-            </>
+            </React.Fragment>
           )
         )}
     </>

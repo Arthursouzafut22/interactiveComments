@@ -14,13 +14,16 @@ export interface comment {
   username: string;
   currentUser: boolean;
   activeEdit: boolean;
+  newComment: string;
   comentario: string;
   replies: Reply[];
 }
 
 export type Reply = {
+  idUser: number;
   user: string;
   coment: string;
+  activeEdit: boolean;
 };
 
 export interface ApiResponse {

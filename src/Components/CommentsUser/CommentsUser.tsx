@@ -4,41 +4,48 @@ import EditCommentsUsers from "./EditCommentsUsers";
 import WrapperBtnsUser from "./WrapperBtnsUser";
 import InfoUser from "./InfoUser";
 import { Reply } from "../../Hooks/RequestApi";
-// import ModalDelete from "../ModalDelete/ModalDelete";
+import ModalUsersDelete from "./ModalUsersDelete";
 
 type RespostaCommnets = {
   id: number;
   replies: Reply[];
   activeEdit: boolean;
-  comentario: string;
+  newComment: string;
   score: number;
-  editCommentsUsers: (id: number) => void;
+  editCommentsUsers: (id: number, idTeste: number) => void;
   updateCommentsUsers: (
     id: number,
-    commentAvtual: string,
-    newCommnets: string
+    idComm: number,
+    commentAtual: string,
+    commentAvtual: string
   ) => void;
+  removeCommentsUsers: (id: number, idUser: number) => void;
+  activeModalUsers: boolean;
+  setActiveModalUsers: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const CommentsUser = ({
   id,
   replies,
-  activeEdit,
-  comentario,
+  newComment,
   score,
   editCommentsUsers,
   updateCommentsUsers,
+  removeCommentsUsers,
+  activeModalUsers,
+  setActiveModalUsers,
 }: RespostaCommnets) => {
   return (
     replies &&
-    replies.map(({ user, coment }) => (
+    replies.map(({ idUser, user, coment, activeEdit }) => (
       <div className={styles.cards} key={coment}>
         <InfoUser />{" "}
         {activeEdit ? (
           <EditCommentsUsers
             id={id}
+            idUser={idUser}
             coment={coment}
-            comentario={comentario}
+            newComment={newComment}
             user={user}
             updateCommentsUsers={updateCommentsUsers}
           />
@@ -59,7 +66,8 @@ const CommentsUser = ({
               }}
             >
               @{user}
-            </span>{" "}
+            </span>
+            {""}
             {coment}
           </p>
         )}
@@ -67,17 +75,22 @@ const CommentsUser = ({
           <Controls score={score} />
           <WrapperBtnsUser
             id={id}
+            idUser={idUser}
             activeEdit={activeEdit}
             editCommentsUsers={editCommentsUsers}
+            setActiveModalUsers={setActiveModalUsers}
           />
         </div>
+        <ModalUsersDelete
+          id={id}
+          idUser={idUser}
+          removeCommentsUsers={removeCommentsUsers}
+          activeModalUsers={activeModalUsers}
+          setActiveModalUsers={setActiveModalUsers}
+        />
       </div>
     ))
   );
 };
 
 export default CommentsUser;
-
-{
-  /* <ModalDelete /> id={} */
-}

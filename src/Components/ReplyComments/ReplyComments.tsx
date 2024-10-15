@@ -5,13 +5,13 @@ import Button from "../Button/Button";
 import { useState } from "react";
 
 interface ReplyProps {
+  id: number;
   username: string;
-  comentario: string;
   postComments: (username: string, comentario: string) => void;
 }
 
-const ReplyComments = ({ username, comentario, postComments }: ReplyProps) => {
-  const [commentUser, setCommentUser] = useState(comentario);
+const ReplyComments = ({ username, postComments }: ReplyProps) => {
+  const [commentUser, setCommentUser] = useState("");
 
   return (
     <form className={styles.comment} onSubmit={(e) => e.preventDefault()}>

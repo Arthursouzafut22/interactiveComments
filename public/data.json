@@ -12,6 +12,7 @@
       "username": "amyrobson",
       "activeEdit": false,
       "currentUser": false,
+      "newComment":"",
       "comentario": "",
       "replies": []
     },
@@ -24,6 +25,7 @@
       "username": "maxblagun",
       "activeEdit": false,
       "currentUser": false,
+      "newComment":"",
       "comentario": "",
       "replies": []
     },
@@ -36,6 +38,7 @@
       "username": "ramsesmiron",
       "activeEdit": false,
       "currentUser": false,
+      "newComment":"",
       "comentario": "",
       "replies": []
     }

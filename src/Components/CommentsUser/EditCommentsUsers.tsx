@@ -4,25 +4,26 @@ import { useState } from "react";
 
 interface EditCommentsProps {
   id: number;
+  idUser: number;
   user: string;
   coment: string;
-  comentario: string;
+  newComment: string;
   updateCommentsUsers: (
     id: number,
-    commentAvtual: string,
-    newCommnets: string
+    idComm: number,
+    commentAtual: string,
+    newComments: string
   ) => void;
 }
 
 const EditCommentsUsers: React.FC<EditCommentsProps> = ({
   id,
+  idUser,
   coment,
-  comentario,
   user,
   updateCommentsUsers,
 }) => {
-  const [commentEdit, setCommentEdit] = useState<string>(coment);
-  console.log(commentEdit);
+  const [newCommentsUsers, setNewCommentsUsers] = useState<string>(coment);
 
   return (
     <>
@@ -31,11 +32,13 @@ const EditCommentsUsers: React.FC<EditCommentsProps> = ({
           name="edit"
           id="edit"
           placeholder={`@${user}`}
-          value={commentEdit}
-          onChange={({ target }) => setCommentEdit(target.value)}
+          value={newCommentsUsers}
+          onChange={({ target }) => setNewCommentsUsers(target.value)}
         />
         <Button
-          onClick={() => updateCommentsUsers(id, comentario, commentEdit)}
+          onClick={() =>
+            updateCommentsUsers(id, idUser, coment, newCommentsUsers)
+          }
         >
           UPDATE
         </Button>
