@@ -157,7 +157,7 @@ const CardsComments: React.FC = () => {
             <React.Fragment key={id}>
               <div className={styles.cards}>
                 <div className={styles.info}>
-                  <img src={img} alt={username} />
+                  <img src={"../" + img} alt={username} />
                   <p>{username}</p>
                   <p>{createdAt}</p>
                 </div>
