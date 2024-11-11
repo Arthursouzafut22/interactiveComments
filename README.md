@@ -7,10 +7,10 @@ Seus usuários devem ser capazes de:
 ● Criar, ler, atualizar e excluir comentários e respostas          
 ● Comentários de votação positiva e negativa        
 
-## Construído com
-• Marcação semântica HTML5
-• Propriedades personalizadas SASS
-• React.Js
-• JavaScript
-• Typescript
+## Construído com                     
+• Marcação semântica HTML5              
+• Propriedades personalizadas SASS                  
+• React.Js                   
+• JavaScript                          
+• Typescript                          
 
