@@ -4,8 +4,8 @@
 
 ## O desafio
 Seus usuários devem ser capazes de:
-● Criar, ler, atualizar e excluir comentários e respostas
-● Comentários de votação positiva e negativa
+● Criar, ler, atualizar e excluir comentários e respostas          
+● Comentários de votação positiva e negativa        
 
 ## Construído com
 • Marcação semântica HTML5
